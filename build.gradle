@@ -1,0 +1,43 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.5.0'
+	id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.bookmyshow.poc'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(23)
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	compileOnly 'org.projectlombok:lombok:1.18.32'
+	annotationProcessor 'org.projectlombok:lombok:1.18.32'
+	testCompileOnly 'org.projectlombok:lombok:1.18.32'
+	testAnnotationProcessor 'org.projectlombok:lombok:1.18.32'
+	implementation 'org.postgresql:postgresql:42.7.3'
+	implementation 'org.mapstruct:mapstruct:1.5.5.Final'
+	annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	// Jakarta Validation API (JSR 380 under jakarta namespace)
+	implementation 'jakarta.validation:jakarta.validation-api:3.0.2'
+	// Hibernate Validator supporting Jakarta Validation API
+	implementation 'org.hibernate.validator:hibernate-validator:7.0.5.Final'
+	// Jakarta Expression Language (EL) required by Hibernate Validator
+	implementation 'org.glassfish.expressly:expressly:5.0.0'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
